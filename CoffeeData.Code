@@ -1,0 +1,44 @@
+SELECT
+  *
+FROM
+  `portfoliocasestudy-1.coffeequality.coffeedata`;
+
+ALTER TABLE
+  `portfoliocasestudy-1.coffeequality.coffeedata`
+DROP COLUMN
+  Farm_Name,
+  Lot_Number,
+  Mill,
+  ICO_Number,
+  Producer,
+  Certification_Address,
+  Certification_Contact;
+--Above code was used to remove unnecessary data columns
+
+SELECT
+  ID,
+  Overall,
+  Count(*)
+FROM
+  `portfoliocasestudy-1.coffeequality.coffeedata`
+GROUP BY
+  ID,
+  Overall
+HAVING
+  COUNT(*) > 1;
+--Used this code to find duplicates and there were none
+
+SELECT
+  Country_of_Origin,
+  AVG(Overall) AS AVG_Overall,
+  AVG(Flavor) AS AVG_Flavor,
+  AVG(Aroma) AS AVG_Aroma,
+  AVG(Body) AS AVG_Body,
+  AVG(Balance) AS AVG_Balance
+FROM
+  `portfoliocasestudy-1.coffeequality.coffeedata`
+GROUP BY
+  Country_of_Origin
+ORDER BY
+  AVG_Overall DESC;
+--This code was used to find the avgerage overall of the countries, but also used to find other aspects that could point to the avgerage being high
