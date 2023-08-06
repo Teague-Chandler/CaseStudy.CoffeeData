@@ -29,6 +29,14 @@ HAVING
 --Used this code to find duplicates and there were none
 
 SELECT
+ *
+FROM
+ `portfoliocasestudy-1.coffeequality.coffeedata`
+WHERE
+ Overall is NULL
+--This code was used to find any NULL values in the data
+
+SELECT
   Country_of_Origin,
   AVG(Overall) AS AVG_Overall,
   AVG(Flavor) AS AVG_Flavor,
